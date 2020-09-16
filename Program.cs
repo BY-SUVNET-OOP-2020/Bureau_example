@@ -16,6 +16,7 @@ class Program
             if (input.ToLower() == "q" || input.ToLower() == "inget")
             {
                 Console.WriteLine("Stänger byrån...");
+                Console.ReadLine();
                 Environment.Exit(0);
             }
             else if (input.ToLower() == "t" || input.ToLower() == "töm")
@@ -25,13 +26,20 @@ class Program
             }
             else
             {
-                if (contents.Length == 0)
+                if (contents.Split("och").Length <= 100)
                 {
-                    contents = input.Trim();
+                    if (contents.Length == 0)
+                    {
+                        contents = input.Trim();
+                    }
+                    else
+                    {
+                        contents = contents + " och " + input.Trim();
+                    }
                 }
                 else
                 {
-                    contents = contents + " och " + input.Trim();
+                    Console.WriteLine($"you have maximum number of item. remove some item to add more.");
                 }
             }
 
